@@ -1,0 +1,9 @@
+<!-- wrapper component for the BoatSearchForm and BoatSearchResults -->
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <lightning:card  title="Find a Boat" class="slds-m-top_10px" >
+        <c:BoatSearchForm />
+    </lightning:card> 
+    <lightning:card  title="Matching Boats" class="slds-m-top_10px" >
+    	<c:BoatSearchResults />
+    </lightning:card>
+</aura:component>

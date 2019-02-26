@@ -1,0 +1,10 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="boat" type="Boat__c"/>
+    <lightning:button class="tile" > 
+        <div class="innertile" style="{!'background-image:url(\'' + v.boat.Picture__c + '\')'}">
+          <div class="lower-third">
+           <h1 class="slds-truncate">{!v.boat.Contact__r.Name}</h1>
+          </div>
+        </div>
+     </lightning:button>
+</aura:component>
