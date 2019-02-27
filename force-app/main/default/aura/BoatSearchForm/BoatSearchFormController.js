@@ -35,5 +35,17 @@
             });
         }
         action.fire();
+    },
+    
+    onFormSubmit: function(component, event, helper){
+        console.log("BoatSearchForm.onFormSubmit");
+        var submitForm = component.getEvent("formsubmit");
+		var boatType = component.find("boatTypeId").get("v.value");
+        console.log(boatType);
+        submitForm.setParams({
+            "formData":
+            {"boatTypeId": boatType}
+        });
+        submitForm.fire();
     }
 })
