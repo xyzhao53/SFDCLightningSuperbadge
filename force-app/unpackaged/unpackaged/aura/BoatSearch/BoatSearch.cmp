@@ -1,0 +1,11 @@
+<!-- wrapper component for the BoatSearchForm and BoatSearchResults -->
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:handler name="formsubmit" event="c:FormSubmit" action="{!c.onFormSubmit}"/>
+    
+    <lightning:card  title="Find a Boat" class="slds-m-top_10px" >
+        <c:BoatSearchForm />
+    </lightning:card> 
+    <lightning:card  title="Matching Boats" class="slds-m-top_10px" >
+    	<c:BoatSearchResults aura:id="BSRcmp"/>
+    </lightning:card>
+</aura:component>
