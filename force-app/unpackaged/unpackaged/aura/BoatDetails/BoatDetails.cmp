@@ -1,0 +1,36 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" >
+    <aura:attribute name="boat" type="Boat__c" />
+    <aura:attribute name="Id" type="Id" default="" />
+    <aura:attribute name="boatRecord" type="Boat__c" />
+    
+    <!--APPLIACTION Event Handler will not have name attribute where as COMPONENT Event does--> 
+    <aura:handler event="c:BoatSelected" action="{!c.onBoatSelected}" />
+    
+    <force:recordData aura:id="service"
+                      recordId="{!v.Id}"
+                      targetRecord="{!v.boat}"
+                      targetFields="{!v.boatRecord}"
+                      fields="Id,
+                              Name,
+                              Description__c,
+                              Price__c,
+                              Length__c,
+                              Contact__r.Name,
+                              Contact__r.Email,
+                              Contact__r.HomePhone,
+                              BoatType__r.Name,
+                              Picture__c" />
+    
+    <aura:if isTrue="{!not(empty(v.Id))}" >
+	<lightning:tabset>
+        <lightning:tab label="Details" id="one">
+            <c:BoatDetail boat="{!v.boat}"/>
+        </lightning:tab>
+        <lightning:tab label="Reviews" id="two">
+            Two Content
+        </lightning:tab>
+        <lightning:tab label="Add Review" id="three">
+        </lightning:tab>
+    </lightning:tabset>
+    </aura:if>
+</aura:component>
