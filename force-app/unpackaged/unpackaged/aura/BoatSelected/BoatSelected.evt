@@ -1,3 +1,0 @@
-<aura:event type="APPLICATION" description="pass selected boat" >
-    <aura:attribute name="boat" type="Boat__c" />
-</aura:event>

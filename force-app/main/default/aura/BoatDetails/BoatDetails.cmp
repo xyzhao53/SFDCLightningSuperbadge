@@ -2,34 +2,30 @@
     <aura:attribute name="boat" type="Boat__c" />
     <aura:attribute name="Id" type="Id" default="" />
     <aura:attribute name="boatRecord" type="Boat__c" />
+    <aura:attribute name="selectedTabId" type="String" access="private"/>
+
     
     <!--APPLIACTION Event Handler will not have name attribute where as COMPONENT Event does--> 
     <aura:handler event="c:BoatSelected" action="{!c.onBoatSelected}" />
     
+    <aura:handler name="BoatReviewAdded" event="c:BoatReviewAdded" action="{!c.onBoatReviewAdded}" />
+    
     <force:recordData aura:id="service"
                       recordId="{!v.Id}"
+                      fields="Id,Name,Description__c,Price__c,Length__c,Contact__r.Name,Contact__r.Email,Contact__r.HomePhone,BoatType__r.Name,Picture__c" 
                       targetRecord="{!v.boat}"
                       targetFields="{!v.boatRecord}"
-                      fields="Id,
-                              Name,
-                              Description__c,
-                              Price__c,
-                              Length__c,
-                              Contact__r.Name,
-                              Contact__r.Email,
-                              Contact__r.HomePhone,
-                              BoatType__r.Name,
-                              Picture__c" />
+                      mode="VIEW" />
     
     <aura:if isTrue="{!not(empty(v.Id))}" >
-	<lightning:tabset>
-        <lightning:tab label="Details" id="one">
+	<lightning:tabset aura:id="tablist" selectedTabId="{!v.selectedTabId}">
+        <lightning:tab label="Details" id="boatDetail">
             <c:BoatDetail boat="{!v.boat}"/>
         </lightning:tab>
-        <lightning:tab label="Reviews" id="two">
-            Two Content
+        <lightning:tab label="Reviews" id="boatreviewtab">
         </lightning:tab>
-        <lightning:tab label="Add Review" id="three">
+        <lightning:tab label="Add Review" id="addReview">
+            <c:AddBoatReview boat="{!v.boat}" />
         </lightning:tab>
     </lightning:tabset>
     </aura:if>

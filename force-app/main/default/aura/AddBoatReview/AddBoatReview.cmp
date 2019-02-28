@@ -1,0 +1,30 @@
+<aura:component >
+    <aura:attribute name="boat" type= "Boat__c" access="global" default="" />
+    <aura:attribute name="boatReview" type="BoatReview__c" access="private"/>
+    <aura:attribute name="newboatReview" type="BoatReview__c" access="private" />
+    <aura:attribute name="recordError" type="String" />
+    
+    <aura:registerEvent name="BoatReviewAdded" type="c:BoatReviewAdded" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <force:recordData aura:id="service" 
+                      fields="Id, Name, Comment__c, Boat__c, Rating__c"
+                      targetRecord="{!v.newBoatReview}"
+                      targetFields="{!v.boatReview}" 
+                      targetError="{!v.recordError}"
+                      recordUpdated="{!c.onRecordUpdated}" />
+
+    <!--display form -->
+    <lightning:layout multipleRows="true" >
+        <lightning:layoutItem>
+             <lightning:input name="title" label="Title" value="{!v.boatReview.Name}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem >
+            <label class="slds-form-element__label" >Comment</label>
+             <lightning:inputRichText disabledCategories="FORMAT_FONT" value="{!v.boatReview.Comment__c}" />
+        </lightning:layoutItem>
+        <lightning:layoutItem class="slds-align--absolute-center">
+        	<lightning:button label="Submit" onclick="{!c.onSave}" iconName="utility:save icon" />
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>
