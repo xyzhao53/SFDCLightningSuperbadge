@@ -23,6 +23,7 @@
             <label class="slds-form-element__label" >Comment</label>
              <lightning:inputRichText disabledCategories="FORMAT_FONT" value="{!v.boatReview.Comment__c}" />
         </lightning:layoutItem>
+            <c:FiveStarRating value="{!v.boatReview.Rating__c}"/>
         <lightning:layoutItem class="slds-align--absolute-center">
         	<lightning:button label="Submit" onclick="{!c.onSave}" iconName="utility:save icon" />
         </lightning:layoutItem>
