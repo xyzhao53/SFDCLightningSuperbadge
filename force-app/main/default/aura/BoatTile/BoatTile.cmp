@@ -3,7 +3,7 @@
     <aura:attribute name="selected" type="boolean" default="false" />
     <aura:registerEvent name="boatSelect" type="c:BoatSelect" />
     <aura:registerEvent name="BoatSelected" type="c:BoatSelected" />
-    
+    <aura:registerEvent name="PlotMapMarker" type="c:PlotMapMarker" />
     <lightning:button class="{!v.selected ? 'tile selected' : 'tile'}" onclick="{!c.onBoatClick}"> 
         <div class="innertile" style="{!'background-image:url(\'' + v.boat.Picture__c + '\')'}">
           <div class="lower-third">

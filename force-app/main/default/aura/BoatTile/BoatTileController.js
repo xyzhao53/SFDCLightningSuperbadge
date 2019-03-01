@@ -17,6 +17,18 @@
             "boat":boat
         });
         boatselected.fire();
+        
+        //fire PlotMapMarker event
+        console.log("BoatTile fire PlotMapMarker");
+        var plotMapMarker = $A.get("e.c:PlotMapMarker");
+		var boat = component.get("v.boat");
+        plotMapMarker.setParams({
+            "sObjectId":boat.Id,
+            "lat":boat.Geolocation__Latitude__s,
+            "long":boat.Geolocation__Longitude__s,
+            "label":boat.Name
+        });
+        boatselected.fire();
     }
     
 })
