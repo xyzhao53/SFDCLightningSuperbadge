@@ -10,9 +10,21 @@
 	},
     onBoatReviewAdded: function(component, event, helper){
         console.log("BoatDetails onBoatReviewAdded");
-        //var boatReview = event.getParam("message");
-        //if(boatReview){
-            component.set("v.selectedTabId", "boatreviewtab");
-        //}
+        component.set("v.selectedTabId", "boatreviewtab");
+        
+        //refresh review tab
+        var BoatReviews = component.find("BoatReviews");
+        BoatReviews.refresh();
+    },
+    onRecordUpdated : function(component, event, helper){
+        var boat = component.get("v.boat");
+        console.log("onRecordUpdated" + boat.Id);
+        var BoatReviews = component.find("BoatReviews");
+        console.log("BoatReviews: " + BoatReviews);
+        if(typeof BoatReviews != 'undefined'){
+            BoatReviews.refresh();
+        }
     }
+
+
 })
